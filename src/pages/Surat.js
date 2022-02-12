@@ -24,9 +24,9 @@ export default function Surat({ searchMode, searchSurat, loading, surat, setCurr
                                 return (
                                     <Link key={surat.number} to={`surat/${surat.number}`}>
                                         <div className='bg-white rounded px-2 py-2 shadow-md'>
-                                            <div className='flex justify-between'>
-                                                <p className='font-bold text-1xl'>{surat.englishName}</p>
-                                                <p className='font-bold text-1xl'>{surat.name}</p>
+                                            <div className='flex flex-col'>
+                                                <p className='font-bold text-1xl text-right'>{surat.name}</p>
+                                                <p className='font-bold text-md'>{surat.englishName}</p>
                                             </div>
                                             <small className='tracking-wider'>{`${surat.numberOfAyahs} ayat`}</small>
                                         </div>
@@ -41,9 +41,9 @@ export default function Surat({ searchMode, searchSurat, loading, surat, setCurr
                                 return (
                                     <Link key={surat.number} to={`surat/${surat.number}`}>
                                         <div className='bg-white rounded px-2 py-2 shadow-md'>
-                                            <div className='flex justify-between'>
-                                                <p className='font-bold text-1xl'>{surat.englishName}</p>
-                                                <p className='font-bold text-1xl'>{surat.name}</p>
+                                            <div className='flex flex-col'>
+                                                <p className='font-bold text-1xl text-right'>{surat.name}</p>
+                                                <p className='font-bold text-md'>{surat.englishName}</p>
                                             </div>
                                             <small className='tracking-wider'>{`${surat.numberOfAyahs} ayat`}</small>
                                         </div>
