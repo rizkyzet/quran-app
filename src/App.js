@@ -101,7 +101,7 @@ function App() {
           )}
 
           {location.pathname === '/' && (
-            <input type="text" className='basis-1 px-2 text-md transition-all rounded-md focus:border-0 focus:outline focus:outline-offset-1 focus:outline-1 focus:outline-blue-300 ' value={searchKeyword} placeholder='search surah...' onChange={(event) => {
+            <input type="text" className='basis-1 px-2 text-md transition-all rounded-sm focus:outline-none' value={searchKeyword} placeholder='search surah...' onChange={(event) => {
               setSearchKeyword(event.target.value)
               doSearchSurat(event.target.value)
             }} />
@@ -109,7 +109,7 @@ function App() {
         </nav>
       </header>
 
-      <section className='grow shrink overflow-y-scroll'>
+      <section className='grow shrink overflow-y-auto'>
         <Routes>
           <Route path="/" element={<Surat searchSurat={searchSurat} searchMode={searchMode} loading={loading} surat={surat} setCurrentAyat={setCurrentAyat} />} ></Route>
           <Route path="/surat/:number/:ayat" element={<Ayat currentAyat={currentAyat} setCurrentAyat={setCurrentAyat} setAllAyat={setAllAyat} quranAudioRef={quranAudioRef} />} ></Route>
@@ -117,7 +117,7 @@ function App() {
       </section>
 
 
-      <footer className='flext-none py-3 px-2 mt-auto text-center border-t-gray-100 border-t-2 bg-gradient-to-r from-blue-400 to-blue-500 text-white sticky'>
+      <footer className='flext-none py-3 px-2  text-center shadow bg-gradient-to-r from-blue-400 to-blue-500 text-white sticky'>
 
         {currentAyat && (
           <div className='flex gap-5'>

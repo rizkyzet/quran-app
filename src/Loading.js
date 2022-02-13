@@ -1,9 +1,9 @@
 export default function Loading() {
     return (
-        <div className="bg-gradient-to-br from-blue-300 to-blue-500 w-full h-full opacity-100 flex justify-center z-10 absolute m-0">
+        <div className="bg-gradient-to-t from-blue-200 to-white w-full h-full opacity-100 flex justify-center z-10 absolute m-0">
             <div className="absolute top-1/3 z-20 flex justify-center items-center flex-col">
 
-                <svg width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" stroke="#fff">
+                <svg width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" className="stroke-blue-500">
                     <g fill="none" fill-rule="evenodd" stroke-width="2">
                         <circle cx="22" cy="22" r="1">
                             <animate attributeName="r"
@@ -39,7 +39,7 @@ export default function Loading() {
                         </circle>
                     </g>
                 </svg>
-                <div className="text-white font-bold tracking-widest pl-2">Getting Data...</div>
+                <div className="text-blue-500 font-bold tracking-widest pl-2">Getting Data...</div>
             </div>
 
         </div>
