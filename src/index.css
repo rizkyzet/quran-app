@@ -3,8 +3,10 @@
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap');
 
-* {
+*,
+html {
   box-sizing: border-box !important;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -12,7 +14,7 @@ body {
   font-family: 'Cormorant Garamond', serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color:#f2f2f2;
+  background-color: #f2f2f2;
 }
 
 code {
@@ -28,17 +30,17 @@ code {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px rgb(88, 113, 255); 
+  box-shadow: inset 0 0 5px rgb(88, 113, 255);
   border-radius: 10px;
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: rgb(94, 118, 253); 
+  background: rgb(94, 118, 253);
   border-radius: 10px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: rgb(67, 95, 255); 
+  background: rgb(67, 95, 255);
 }

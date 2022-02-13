@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams,Link } from "react-router-dom";
 import Loading from "../Loading";
 
-function Ayat({ setCurrentAyat, currentAyat, setAllAyat, quranAudioRef }) {
+function Ayat({ setCurrentAyat, currentAyat, setAllAyat }) {
 
-    const { number } = useParams();
+    const { number,ayat:numberInSurah } = useParams();
     const [ayat, setAyat] = useState({});
     const [arti, setArti] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -30,16 +30,24 @@ function Ayat({ setCurrentAyat, currentAyat, setAllAyat, quranAudioRef }) {
                 ...data
             })
             setLoading(false)
-            setCurrentAyat(data.ayahs[0].number);
+
+            if(numberInSurah === 'start'){
+                setCurrentAyat(data.ayahs[0].number);
+                  document.getElementById('ayat').scrollIntoView();
+            }else{
+
+                setCurrentAyat(parseInt(numberInSurah));
+                document.getElementById(`id-${numberInSurah}`).scrollIntoView();
+            }
 
 
         };
 
 
         getSpesificAyat();
-        document.getElementById('ayat').scrollIntoView();
+      
 
-    }, [number, setCurrentAyat, setAllAyat]);
+    }, [number, setCurrentAyat, setAllAyat,numberInSurah]);
 
 
     // useEffect(() => {
@@ -60,18 +68,20 @@ function Ayat({ setCurrentAyat, currentAyat, setAllAyat, quranAudioRef }) {
                 !loading && (
                     ayat.ayahs.map((ay, index) => {
                         return (
-                            <div id={`id-${ay.number}`} key={`${ay.number}`} className={`rounded p-5 shadow-md mb-5 mx-2 cursor-pointer ${currentAyat === ay.number ? 'bg-blue-200' : 'bg-white'}`} onClick={() => {
-                                setCurrentAyat(ay.number)
+                            <Link key={`${ay.number}`} to={`/surat/${number}/${ay.number}`}>
+                                <div id={`id-${ay.number}`}  className={`rounded p-5 shadow-md mb-5 mx-2 cursor-pointer ${currentAyat === ay.number ? 'bg-blue-200' : 'bg-white'}`} onClick={() => {
+                                    setCurrentAyat(ay.number)
 
 
-                            }}>
-                                <div className='flex justify-end mb-3'>
-                                    <p className='text-slate-700 text-2xl text-right'>{`${ay.text}`} <span className="bg-blue-400 text-white rounded-md px-1 py-0 text-sm">{ay.numberInSurah.toLocaleString('ar-EG')}</span></p>
+                                }}>
+                                    <div className='flex justify-end mb-3'>
+                                        <p className='text-slate-700 text-2xl text-right'>{`${ay.text}`} <span className="bg-blue-400 text-white rounded-md px-1 py-0 text-sm">{ay.numberInSurah.toLocaleString('ar-EG')}</span></p>
+                                    </div>
+                                    <small className='tracking-wider pt'>{arti[index].text}</small>
+
+
                                 </div>
-                                <small className='tracking-wider pt'>{arti[index].text}</small>
-
-
-                            </div>
+                            </Link>
                         )
                     })
                 )}

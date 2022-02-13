@@ -52,7 +52,7 @@ function App() {
 
 
 
-  const matchedBack = useMatch('/surat/:number', { path: location.pathname });
+  const matchedBack = useMatch('/surat/:number/:ayat', { path: location.pathname });
 
 
 
@@ -75,8 +75,8 @@ function App() {
 
 
   return (
-    <div className='app flex flex-col'>
-      <header className='flex-none bg-gradient-to-r from-cyan-500 to-blue-500 rounded drop-shadow-md'>
+    <div className='app flex flex-col relative'>
+      <header className='flex-none bg-gradient-to-r from-blue-400 to-blue-500 drop-shadow-md sticky'>
         <nav className={`flex ${matchedBack ? 'justify-start' : 'justify-end'} p-2 text-center `}>
           {matchedBack && (
             <NavLink className={({ isActive }) =>
@@ -85,7 +85,7 @@ function App() {
           )}
 
           {location.pathname === '/' && (
-            <input type="text" className='basis-1 px-2 outline-none outline-1 outline-offset-1 outline-gray-300 transition-all rounded-sm  focus:border-0 focus:border-white focus:outline focus:outline-offset-1 focus:outline-1 focus:outline-blue-300 ' value={searchKeyword} placeholder='search surah...' onChange={(event) => {
+            <input type="text" className='basis-1 px-2 outline-none outline-1 outline-offset-1 outline-gray-300 transition-all rounded-md focus:border-0 focus:border-white focus:outline focus:outline-offset-1 focus:outline-1 focus:outline-blue-300 ' value={searchKeyword} placeholder='search surah...' onChange={(event) => {
               setSearchKeyword(event.target.value)
               doSearchSurat(event.target.value)
             }} />
@@ -96,16 +96,16 @@ function App() {
       <section className='grow shrink overflow-y-scroll'>
         <Routes>
           <Route path="/" element={<Surat searchSurat={searchSurat} searchMode={searchMode} loading={loading} surat={surat} setCurrentAyat={setCurrentAyat} />} ></Route>
-          <Route path="/surat/:number" element={<Ayat currentAyat={currentAyat} setCurrentAyat={setCurrentAyat} setAllAyat={setAllAyat} quranAudioRef={quranAudioRef} />} ></Route>
+          <Route path="/surat/:number/:ayat" element={<Ayat currentAyat={currentAyat} setCurrentAyat={setCurrentAyat} setAllAyat={setAllAyat} quranAudioRef={quranAudioRef} />} ></Route>
         </Routes>
       </section>
 
 
-      <footer className='flext-none py-3 px-2 mt-auto text-center border-t-gray-100 border-t-2 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded'>
+      <footer className='flext-none py-3 px-2 mt-auto text-center border-t-gray-100 border-t-2 bg-gradient-to-r from-blue-400 to-blue-500 text-white sticky'>
 
         {currentAyat && (
           <div className='flex gap-5'>
-            <select value={currentAyat} className='text-slate-700 text-center' onChange={(e) => {
+            <select value={currentAyat} className='text-slate-700 text-center bg-white rounded focus:outline focus:outline-offset-1 focus:outline-1 focus:outline-blue-300' onChange={(e) => {
               setCurrentAyat(parseInt(e.target.value));
               document.getElementById(`id-${e.target.value}`).scrollIntoView();
 
@@ -124,8 +124,8 @@ function App() {
         )}
 
         {!currentAyat && (
-          <small key={`small-${currentAyat}`}>
-            Rizkyzet All Rights Reserved
+          <small key={`small-${currentAyat}`} className="tracking-widest">
+            Source Code : <a href="https://github.com/rizkyzet/quran-app" className='underline' target="_blank" rel='noreferrer'>Github</a> @ 2022
           </small>
         )}
 
