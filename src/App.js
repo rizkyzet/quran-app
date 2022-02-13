@@ -19,12 +19,13 @@ function App() {
   const [allAyat, setAllAyat] = useState({});
   const quranAudioRef = useRef(null);
 
-  const activeClass = 'font-bold tracking-wider px-2 text-white';
-  const standartClass = 'tracking-wider px-2 text-white';
+  const activeClass = 'font-bold tracking-wider px-2 text-white bg-white';
+  const standartClass = 'tracking-wider px-1 text-blue-500 bg-white rounded';
 
 
 
   useEffect(() => {
+
 
 
     const getSurat = async () => {
@@ -74,18 +75,33 @@ function App() {
 
 
 
+
   return (
     <div className='app flex flex-col relative'>
       <header className='flex-none bg-gradient-to-r from-blue-400 to-blue-500 drop-shadow-md sticky'>
-        <nav className={`flex ${matchedBack ? 'justify-start' : 'justify-end'} p-2 text-center `}>
+        <nav className={`flex ${matchedBack ? 'justify-between' : 'justify-end'} p-2 text-center `}>
           {matchedBack && (
-            <NavLink className={({ isActive }) =>
-              isActive ? activeClass : standartClass
-            } to="/">Back</NavLink>
+            <>
+              <NavLink className={({ isActive }) =>
+                isActive ? activeClass : standartClass
+              } to="/" onClick={() => {
+                setSearchKeyword('');
+                setSearchSurat([]);
+                setSearchMode(false);
+              }}>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+              </NavLink>
+
+              <h1 className='text-md tracking-wider text-white'>
+                {allAyat.englishName}
+              </h1>
+            </>
           )}
 
           {location.pathname === '/' && (
-            <input type="text" className='basis-1 px-2 outline-none outline-1 outline-offset-1 outline-gray-300 transition-all rounded-md focus:border-0 focus:border-white focus:outline focus:outline-offset-1 focus:outline-1 focus:outline-blue-300 ' value={searchKeyword} placeholder='search surah...' onChange={(event) => {
+            <input type="text" className='basis-1 px-2 outline-none outline-1 outline-offset-1 outline-gray-300 transition-all rounded-md focus:border-0 focus:outline focus:outline-offset-1 focus:outline-1 focus:outline-blue-300 ' value={searchKeyword} placeholder='search surah...' onChange={(event) => {
               setSearchKeyword(event.target.value)
               doSearchSurat(event.target.value)
             }} />
@@ -105,7 +121,7 @@ function App() {
 
         {currentAyat && (
           <div className='flex gap-5'>
-            <select value={currentAyat} className='text-slate-700 text-center bg-white rounded focus:outline focus:outline-offset-1 focus:outline-1 focus:outline-blue-300' onChange={(e) => {
+            <select value={currentAyat} className='text-sm px-1 text-slate-900 text-center bg-white rounded focus:outline focus:outline-offset-1 focus:outline-1 focus:outline-blue-300' onChange={(e) => {
               setCurrentAyat(parseInt(e.target.value));
               document.getElementById(`id-${e.target.value}`).scrollIntoView();
 
@@ -113,7 +129,7 @@ function App() {
 
               {allAyat.ayahs.map((ayat) => {
                 return (
-                  <option key={`option-${ayat.number}`} value={ayat.number}>{ayat.numberInSurah}</option>
+                  <option key={`option-${ayat.number}`} value={ayat.number}>{`Ayat ${ayat.numberInSurah}`}</option>
                 )
               })}
             </select>

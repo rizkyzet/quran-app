@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import { useParams,Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import Loading from "../Loading";
 
 function Ayat({ setCurrentAyat, currentAyat, setAllAyat }) {
 
-    const { number,ayat:numberInSurah } = useParams();
+    const { number, ayat: numberInSurah } = useParams();
     const [ayat, setAyat] = useState({});
     const [arti, setArti] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -31,10 +31,10 @@ function Ayat({ setCurrentAyat, currentAyat, setAllAyat }) {
             })
             setLoading(false)
 
-            if(numberInSurah === 'start'){
+            if (numberInSurah === 'start') {
                 setCurrentAyat(data.ayahs[0].number);
-                  document.getElementById('ayat').scrollIntoView();
-            }else{
+                document.getElementById('ayat').scrollIntoView();
+            } else {
 
                 setCurrentAyat(parseInt(numberInSurah));
                 document.getElementById(`id-${numberInSurah}`).scrollIntoView();
@@ -45,9 +45,9 @@ function Ayat({ setCurrentAyat, currentAyat, setAllAyat }) {
 
 
         getSpesificAyat();
-      
 
-    }, [number, setCurrentAyat, setAllAyat,numberInSurah]);
+
+    }, [number, setCurrentAyat, setAllAyat, numberInSurah]);
 
 
     // useEffect(() => {
@@ -59,7 +59,7 @@ function Ayat({ setCurrentAyat, currentAyat, setAllAyat }) {
     // }, [currentAyat, quranAudioRef])
 
     return (
-        <div className='bg-blue-100 py-2 relative min-h-screen' id="ayat">
+        <div className='bg-blue-100 relative min-h-full' id="ayat">
             {loading && (
                 <Loading />
             )}
@@ -69,7 +69,7 @@ function Ayat({ setCurrentAyat, currentAyat, setAllAyat }) {
                     ayat.ayahs.map((ay, index) => {
                         return (
                             <Link key={`${ay.number}`} to={`/surat/${number}/${ay.number}`}>
-                                <div id={`id-${ay.number}`}  className={`rounded p-5 shadow-md mb-5 mx-2 cursor-pointer ${currentAyat === ay.number ? 'bg-blue-200' : 'bg-white'}`} onClick={() => {
+                                <div id={`id-${ay.number}`} className={`rounded p-5 shadow-md mb-5 mx-2 cursor-pointer ${currentAyat === ay.number ? 'bg-gradient-to-br from-blue-200 to-blue-300' : 'bg-white'}`} onClick={() => {
                                     setCurrentAyat(ay.number)
 
 
