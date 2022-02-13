@@ -101,7 +101,7 @@ function App() {
           )}
 
           {location.pathname === '/' && (
-            <input type="text" className='basis-1 px-2 outline-none outline-1 outline-offset-1 outline-gray-300 transition-all rounded-md focus:border-0 focus:outline focus:outline-offset-1 focus:outline-1 focus:outline-blue-300 ' value={searchKeyword} placeholder='search surah...' onChange={(event) => {
+            <input type="text" className='basis-1 px-2 text-md transition-all rounded-md focus:border-0 focus:outline focus:outline-offset-1 focus:outline-1 focus:outline-blue-300 ' value={searchKeyword} placeholder='search surah...' onChange={(event) => {
               setSearchKeyword(event.target.value)
               doSearchSurat(event.target.value)
             }} />
