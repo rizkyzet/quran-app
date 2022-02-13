@@ -66,24 +66,26 @@ function Ayat({ setCurrentAyat, currentAyat, setAllAyat }) {
 
             {
                 !loading && (
-                    ayat.ayahs.map((ay, index) => {
-                        return (
-                            <Link key={`${ay.number}`} to={`/surat/${number}/${ay.number}`}>
-                                <div id={`id-${ay.number}`} className={`rounded p-5 shadow-md mb-5 mx-2 cursor-pointer ${currentAyat === ay.number ? 'bg-gradient-to-br from-blue-200 to-blue-300' : 'bg-white'}`} onClick={() => {
-                                    setCurrentAyat(ay.number)
+                    <div className="py-2">
+                        {ayat.ayahs.map((ay, index) => {
+                            return (
+                                <Link key={`${ay.number}`} to={`/surat/${number}/${ay.number}`}>
+                                    <div id={`id-${ay.number}`} className={`rounded p-5 shadow-md mb-5 mx-2 cursor-pointer ${currentAyat === ay.number ? 'bg-gradient-to-br from-blue-200 to-blue-300' : 'bg-white'}`} onClick={() => {
+                                        setCurrentAyat(ay.number)
 
 
-                                }}>
-                                    <div className='flex justify-end mb-3'>
-                                        <p className='text-slate-700 text-2xl text-right'>{`${ay.text}`} <span className="bg-blue-400 text-white rounded-md px-1 py-0 text-sm">{ay.numberInSurah.toLocaleString('ar-EG')}</span></p>
+                                    }}>
+                                        <div className='flex justify-end mb-3'>
+                                            <p className='text-slate-700 text-2xl text-right'>{`${ay.text}`} <span className="bg-blue-400 text-white rounded-md px-1 py-0 text-sm">{ay.numberInSurah.toLocaleString('ar-EG')}</span></p>
+                                        </div>
+                                        <small className='tracking-wider pt'>{arti[index].text}</small>
+
+
                                     </div>
-                                    <small className='tracking-wider pt'>{arti[index].text}</small>
-
-
-                                </div>
-                            </Link>
-                        )
-                    })
+                                </Link>
+                            )
+                        })}
+                    </div>
                 )}
         </div>
     )
