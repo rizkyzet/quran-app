@@ -11,7 +11,9 @@ export default function SavedAyat({ setCurrentAyat, currentAyat, deleteSavedAyat
         if (data.length > 0) {
             setSavedAyat([...data]);
             setCurrentAyat(parseInt(data[0].idAyat));
-            console.log('hmm')
+    
+        }else{
+            setCurrentAyat('');
         }
 
         // setSearchSavedAyatMode(false);
