@@ -37,7 +37,7 @@ function Ayat({ setCurrentAyat, currentAyat, setAllAyat }) {
             setLoading(false)
 
 
-            if(firstTimeLoad){
+            // if(firstTimeLoad){
                 if (numberInSurah === 'start') {
                     setCurrentAyat(data.ayahs[0].number);
                     document.getElementById('ayat').scrollIntoView();
@@ -47,7 +47,7 @@ function Ayat({ setCurrentAyat, currentAyat, setAllAyat }) {
                     document.getElementById(`id-${numberInSurah}`).scrollIntoView();
                     setFirstTimeLoad(false)
                 }
-            }
+            // }
 
 
         };
@@ -86,7 +86,7 @@ function Ayat({ setCurrentAyat, currentAyat, setAllAyat }) {
                                 <Link key={`${ay.number}`} to={`/surat/${number}/${ay.number}`}>
                                     <div id={`id-${ay.number}`} className={`rounded p-5 shadow-md mb-5 mx-2 cursor-pointer ${currentAyat === ay.number ? 'bg-gradient-to-br from-blue-200 to-blue-300' : 'bg-white'}`} onClick={(e) => {
                                         setCurrentAyat(ay.number)
-                                        document.getElementById(`id-${ay.number}`).scrollIntoView();
+                                        // document.getElementById(`id-${ay.number}`).scrollIntoView();
                                     }}>
                                         <div className='flex justify-end mb-3'>
                                             <p className='text-slate-700 text-2xl text-right'>{`${ay.text}`} <span className="bg-blue-400 text-white rounded-md px-1 py-0 text-sm">{ay.numberInSurah.toLocaleString('ar-EG')}</span></p>
