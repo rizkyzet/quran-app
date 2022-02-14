@@ -5,7 +5,7 @@ import Loading from '../Loading';
 export default function Surat({ searchMode, searchSurat, loading, surat, setCurrentAyat }) {
 
     useEffect(() => {
-        setCurrentAyat(null)
+        setCurrentAyat('')
     }, [setCurrentAyat])
 
     return (
