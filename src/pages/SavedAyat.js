@@ -11,11 +11,12 @@ export default function SavedAyat({ setCurrentAyat, currentAyat, deleteSavedAyat
         if (data.length > 0) {
             setSavedAyat([...data]);
             setCurrentAyat(parseInt(data[0].idAyat));
-    
         }else{
+            setSavedAyat([...data]);
             setCurrentAyat('');
         }
 
+  
         // setSearchSavedAyatMode(false);
         // setSearchKeywordSavedAyat('');
 

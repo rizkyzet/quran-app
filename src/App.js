@@ -65,9 +65,7 @@ function App() {
   }, [currentAyat])
 
 
-  useEffect(() => {
 
-  }, [])
 
 
   const matchedAyat = useMatch('/surat/:number/:ayat', { path: location.pathname });
@@ -209,7 +207,7 @@ function App() {
           {matchedSavedAyat && (
 
             <>
-             <div className='flex justify-start gap-1 items-center'>
+              <div className='flex justify-start gap-1 items-center'>
                 <NavLink className={({ isActive }) =>
                   isActive ? activeClass : standartClass
                 } to="/">
