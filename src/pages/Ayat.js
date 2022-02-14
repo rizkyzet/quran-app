@@ -96,7 +96,9 @@ function Ayat({ setCurrentAyat, currentAyat, setAllAyat }) {
                                             <small className='tracking-wider'>{arti[index].text}</small>
                                         </div>
 
-                                        {savedAyat.filter((val) => val.idAyat === ay.number).length > 0 ?
+                                        {currentAyat === ay.number && (
+                                        
+                                        savedAyat.filter((val) => val.idAyat === ay.number).length > 0 ?
 
                                             <div className="mt-1 flex justify-end">
                                                 <button disabled
@@ -125,7 +127,7 @@ function Ayat({ setCurrentAyat, currentAyat, setAllAyat }) {
                                                     Save Ayat
                                                 </button>
                                             </div>
-
+                                        )
                                         }
 
 
