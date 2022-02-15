@@ -159,7 +159,7 @@ function App() {
       <header className='flex-none bg-gradient-to-r from-blue-400 to-blue-500 drop-shadow-md sticky'>
 
         {!matched404 && (
-          <nav className={`flex justify-between px-1 py-3 text-center `}>
+          <nav className={`flex justify-between px-3 py-3 text-center`}>
             {matchedAyat && (
               <>
                 <div className='flex justify-start gap-1 items-center'>

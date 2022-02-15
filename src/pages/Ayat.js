@@ -43,12 +43,12 @@ function Ayat({ setCurrentAyat, currentAyat, setAllAyat }) {
                 document.getElementById('ayat').scrollIntoView();
                 setFirstTimeLoad(false)
                 setLoading(false)
-                
+
             } else {
                 setCurrentAyat(parseInt(numberInSurah));
-                document.getElementById(`id-${numberInSurah}`).scrollIntoView();
                 setFirstTimeLoad(false)
                 setLoading(false)
+                document.getElementById(`id-${numberInSurah}`).scrollIntoView();
             }
             // }
 
@@ -58,16 +58,9 @@ function Ayat({ setCurrentAyat, currentAyat, setAllAyat }) {
         if (firstTimeLoad || numberInSurah === 'start') {
             setLoading(true);
             getSpesificAyat();
-        } else {
-            setCurrentAyat(parseInt(numberInSurah));
-            document.getElementById(`id-${numberInSurah}`).scrollIntoView();
+        } 
 
-        }
-
-
-        return function () {
-
-        }
+     
 
     }, [number, setCurrentAyat, setAllAyat, numberInSurah, firstTimeLoad, setFirstTimeLoad]);
 
