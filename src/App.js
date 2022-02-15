@@ -155,8 +155,8 @@ function App() {
   }
 
   return (
-    <div className='app flex flex-col relative'>
-      <header className='flex-none bg-gradient-to-r from-blue-400 to-blue-500 drop-shadow-md sticky'>
+    <div className='app flex flex-col relative py-10'>
+      <header className='flex-none bg-gradient-to-r from-blue-400 to-blue-500 drop-shadow-md absolute top-0 z-50 right-0 left-0'>
 
         {!matched404 && (
           <nav className={`flex justify-between px-3 py-3 text-center`}>
@@ -313,7 +313,7 @@ function App() {
       </section>
 
 
-      <footer className='flext-none py-3 px-2  text-center shadow bg-gradient-to-r from-blue-400 to-blue-500 text-white sticky'>
+      <footer className='flext-none py-3 px-2  text-center shadow bg-gradient-to-r from-blue-400 to-blue-500 text-white sticky bottom-0'>
 
         {currentAyat && (
           <div className='flex gap-5'>
