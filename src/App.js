@@ -140,7 +140,7 @@ function App() {
     setSearchSavedAyatMode(true);
     const searchData = savedAyat.filter((ayat) => {
       const string = `${ayat.englishName} (${ayat.numberInSurah}) `;
-      return string.toLocaleLowerCase().includes(searchKey.toLowerCase()) || ayat.arti.includes(searchKey);
+      return string.toLocaleLowerCase().includes(searchKey.toLowerCase()) || ayat.arti.toLowerCase().includes(searchKey.toLowerCase());
       // return surat.englishName.toLowerCase() === searchKey.toLowerCase();
     })
 
