@@ -29,8 +29,8 @@ function App() {
   const [allAyat, setAllAyat] = useState({});
   const quranAudioRef = useRef(null);
 
-  const activeClass = 'tracking-wider px-2 text-white bg-white text-blue-500 rounded text-sm pointer-events-none';
-  const standartClass = 'tracking-wider text-sm text-white hover:bg-white hover:text-blue-500 rounded px-2';
+  const activeClass = 'tracking-wider px-1 text-white bg-white text-blue-500 rounded text-sm pointer-events-none';
+  const standartClass = 'tracking-wider text-sm text-white hover:bg-white hover:text-blue-500 rounded px-1';
 
 
 
@@ -159,7 +159,7 @@ function App() {
       <header className='flex-none bg-gradient-to-r from-blue-400 to-blue-500 drop-shadow-md sticky'>
 
         {!matched404 && (
-          <nav className={`flex justify-between p-2 text-center `}>
+          <nav className={`flex justify-between px-1 py-3 text-center `}>
             {matchedAyat && (
               <>
                 <div className='flex justify-start gap-1 items-center'>
@@ -185,20 +185,20 @@ function App() {
                   </NavLink>
                 </div>
 
-                <div className='flex gap-2'>
+                <div className='flex gap-1'>
                   
 
                   {
                     !matchedSavedAyat && (
                       Object.keys(surat).length !== 0 && (
-                        <select value={allAyat.number} className='text-sm px-1 text-slate-900 text-center bg-white rounded focus:outline focus:outline-offset-1 focus:outline-1 focus:outline-blue-300' onChange={(e) => {
+                        <select value={allAyat.number} className='text-sm p-0 text-slate-900 text-center bg-white rounded focus:outline focus:outline-offset-1 focus:outline-1 focus:outline-blue-300' onChange={(e) => {
                       
                           navigate(`/surat/${e.target.value}/start`);
                         }}>
 
                           {surat.map((surat) => {
                             return (
-                              <option key={`optionSurat-${surat.number}`} value={surat.number}>{`Surat ${surat.englishName}`}</option>
+                              <option key={`optionSurat-${surat.number}`} value={surat.number}>{`${surat.englishName}`}</option>
                             )
                           })}
                         </select>
@@ -209,7 +209,7 @@ function App() {
                   {
                     !matchedSavedAyat && (
                       Object.keys(allAyat).length !== 0 && (
-                        <select value={currentAyat} className='text-sm px-1 text-slate-900 text-center bg-white rounded focus:outline focus:outline-offset-1 focus:outline-1 focus:outline-blue-300' onChange={(e) => {
+                        <select value={currentAyat} className='text-sm p-0 text-slate-900 text-center bg-white rounded focus:outline focus:outline-offset-1 focus:outline-1 focus:outline-blue-300' onChange={(e) => {
                           setCurrentAyat(parseInt(e.target.value));
                           document.getElementById(`id-${e.target.value}`).scrollIntoView();
                           navigate(`/surat/${allAyat.number}/${e.target.value}`);

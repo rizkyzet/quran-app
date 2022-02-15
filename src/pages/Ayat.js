@@ -43,11 +43,12 @@ function Ayat({ setCurrentAyat, currentAyat, setAllAyat }) {
                 document.getElementById('ayat').scrollIntoView();
                 setFirstTimeLoad(false)
                 setLoading(false)
-                console.log('init')
+                
             } else {
                 setCurrentAyat(parseInt(numberInSurah));
                 document.getElementById(`id-${numberInSurah}`).scrollIntoView();
                 setFirstTimeLoad(false)
+                setLoading(false)
             }
             // }
 
