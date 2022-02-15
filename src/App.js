@@ -155,8 +155,8 @@ function App() {
   }
 
   return (
-    <div className='app flex flex-col relative py-10'>
-      <header className='flex-none bg-gradient-to-r from-blue-400 to-blue-500 drop-shadow-md absolute top-0 z-50 right-0 left-0'>
+    <div className='app flex flex-col relative'>
+      <header className='flex-none bg-gradient-to-r from-blue-400 to-blue-500 drop-shadow-md sticky top-0'>
 
         {!matched404 && (
           <nav className={`flex justify-between px-3 py-3 text-center`}>
