@@ -43,7 +43,7 @@ export default function Loading({ text }) {
 
 
 
-                <small className="text-blue-500 font-bold tracking-widest pl-2">jika lama, silahkan refresh halaman...</small>
+                <small className="text-blue-500 font-bold tracking-widest pl-2">jika terlalu lama, silahkan refresh halaman...</small>
 
 
             </div>

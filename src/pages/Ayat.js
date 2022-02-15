@@ -58,13 +58,19 @@ function Ayat({ setCurrentAyat, currentAyat, setAllAyat }) {
         if (firstTimeLoad || numberInSurah === 'start') {
             setLoading(true);
             getSpesificAyat();
-        } 
+        }
 
-     
+
 
     }, [number, setCurrentAyat, setAllAyat, numberInSurah, firstTimeLoad, setFirstTimeLoad]);
 
 
+
+    useEffect(() => {
+        setCurrentAyat(parseInt(numberInSurah));
+        const el = document.getElementById(`id-${numberInSurah}`);
+        if (el) el.scrollIntoView();
+    }, [numberInSurah,setCurrentAyat])
 
 
     const saveAyat = (obj) => {
