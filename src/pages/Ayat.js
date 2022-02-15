@@ -117,7 +117,7 @@ function Ayat({ setCurrentAyat, currentAyat, setAllAyat }) {
                                             <p className='text-slate-700 text-2xl text-right'>{`${ay.text}`} <span className="bg-blue-400 text-white rounded-md px-1 py-0 text-sm">{ay.numberInSurah.toLocaleString('ar-EG')}</span></p>
                                         </div>
 
-                                        <div className="mb-6">
+                                        <div className="mb-10">
                                             <small className='tracking-wider'>{arti[index].text}</small>
                                         </div>
 
@@ -125,7 +125,7 @@ function Ayat({ setCurrentAyat, currentAyat, setAllAyat }) {
 
                                             savedAyat.filter((val) => val.idAyat === ay.number).length > 0 ?
 
-                                                <div className="mt-1 flex justify-end absolute bottom-2 right-2">
+                                                <div className="mt-1 flex justify-end absolute bottom-4 right-4">
                                                     <button 
                                                         className="bg-blue-100 text-blue-500 rounded  px-2 py-1 drop-shadow text-sm"
                                                         onClick={() => {
@@ -138,7 +138,7 @@ function Ayat({ setCurrentAyat, currentAyat, setAllAyat }) {
 
                                                 :
 
-                                                <div className="mt-1 flex justify-end absolute bottom-2 right-2">
+                                                <div className="mt-1 flex justify-end absolute bottom-4 right-4">
                                                     <button onClick={(e) => {
                                                         e.preventDefault();
                                                         e.stopPropagation();
