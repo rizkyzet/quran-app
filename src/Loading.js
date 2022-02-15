@@ -1,4 +1,4 @@
-export default function Loading() {
+export default function Loading({text}) {
     return (
         <div className="bg-gradient-to-t from-blue-200 to-white w-full h-full opacity-100 flex justify-center z-10 absolute m-0">
             <div className="absolute top-1/3 z-20 flex justify-center items-center flex-col">
@@ -39,7 +39,7 @@ export default function Loading() {
                         </circle>
                     </g>
                 </svg>
-                <div className="text-blue-500 font-bold tracking-widest pl-2">Getting Data...</div>
+                <div className="text-blue-500 font-bold tracking-widest pl-2">{text}</div>
             </div>
 
         </div>

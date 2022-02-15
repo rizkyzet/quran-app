@@ -34,7 +34,7 @@ function Ayat({ setCurrentAyat, currentAyat, setAllAyat }) {
             setAllAyat({
                 ...data
             })
-            setLoading(false)
+
 
 
             // if(firstTimeLoad){
@@ -42,6 +42,8 @@ function Ayat({ setCurrentAyat, currentAyat, setAllAyat }) {
                 setCurrentAyat(data.ayahs[0].number);
                 document.getElementById('ayat').scrollIntoView();
                 setFirstTimeLoad(false)
+                setLoading(false)
+                console.log('init')
             } else {
                 setCurrentAyat(parseInt(numberInSurah));
                 document.getElementById(`id-${numberInSurah}`).scrollIntoView();
@@ -53,17 +55,20 @@ function Ayat({ setCurrentAyat, currentAyat, setAllAyat }) {
         };
 
         if (firstTimeLoad || numberInSurah === 'start') {
+            setLoading(true);
             getSpesificAyat();
         } else {
             setCurrentAyat(parseInt(numberInSurah));
             document.getElementById(`id-${numberInSurah}`).scrollIntoView();
+
         }
 
 
+        return function () {
+
+        }
 
     }, [number, setCurrentAyat, setAllAyat, numberInSurah, firstTimeLoad, setFirstTimeLoad]);
-
-
 
 
 
@@ -88,7 +93,7 @@ function Ayat({ setCurrentAyat, currentAyat, setAllAyat }) {
         const data = JSON.parse(localStorage.getItem('savedAyat'));
 
         const newData = data.filter((val) => {
-           return val.idAyat !== idAyat;
+            return val.idAyat !== idAyat;
         })
 
         setSavedAyat([...newData]);
@@ -100,7 +105,7 @@ function Ayat({ setCurrentAyat, currentAyat, setAllAyat }) {
     return (
         <div className='bg-blue-100 relative min-h-full' id="ayat">
             {loading && (
-                <Loading />
+                <Loading text="Getting Ayat..." />
             )}
 
             {
@@ -126,7 +131,7 @@ function Ayat({ setCurrentAyat, currentAyat, setAllAyat }) {
                                             savedAyat.filter((val) => val.idAyat === ay.number).length > 0 ?
 
                                                 <div className="mt-1 flex justify-end absolute bottom-4 right-4">
-                                                    <button 
+                                                    <button
                                                         className="bg-blue-100 text-blue-500 rounded  px-2 py-1 drop-shadow text-sm"
                                                         onClick={() => {
                                                             deleteSaveAyat(ay.number)

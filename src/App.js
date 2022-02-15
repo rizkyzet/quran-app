@@ -54,6 +54,9 @@ function App() {
     getSurat();
 
 
+    return function () {
+      setLoading(true);
+    }
 
   }, []);
 
@@ -183,9 +186,25 @@ function App() {
                 </div>
 
                 <div className='flex gap-2'>
-                  <h1 className='text-md tracking-wider text-blue-500 bg-white rounded px-2 text-sm pointer-events-none'>
-                    {allAyat.englishName}
-                  </h1>
+                  
+
+                  {
+                    !matchedSavedAyat && (
+                      Object.keys(surat).length !== 0 && (
+                        <select value={allAyat.number} className='text-sm px-1 text-slate-900 text-center bg-white rounded focus:outline focus:outline-offset-1 focus:outline-1 focus:outline-blue-300' onChange={(e) => {
+                      
+                          navigate(`/surat/${e.target.value}/start`);
+                        }}>
+
+                          {surat.map((surat) => {
+                            return (
+                              <option key={`optionSurat-${surat.number}`} value={surat.number}>{`Surat ${surat.englishName}`}</option>
+                            )
+                          })}
+                        </select>
+                      )
+                    )
+                  }
 
                   {
                     !matchedSavedAyat && (

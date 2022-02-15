@@ -11,7 +11,7 @@ export default function Surat({ searchMode, searchSurat, loading, surat, setCurr
     return (
         <div className='bg-blue-100 relative min-h-full text-slate-700'>
             {loading && (
-                <Loading />
+                <Loading text="Getting Surah..." />
             )}
 
 
