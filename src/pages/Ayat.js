@@ -11,13 +11,15 @@ function Ayat({ setCurrentAyat, currentAyat, setAllAyat }) {
     const [savedAyat, setSavedAyat] = useState([]);
     const [loading, setLoading] = useState(true);
     const [firstTimeLoad, setFirstTimeLoad] = useState(true);
+    const [transliteration, setTransliteration] = useState([]);
+
     useEffect(() => {
 
-        const translation = ['quran-uthmani', 'id.indonesian', 'id.muntakhab'];
+        const translation = ['quran-uthmani', 'id.indonesian', 'id.muntakhab', 'en.transliteration']; //harusnya sih object
 
         const getSpesificAyat = async () => {
 
-            const request = await fetch(`https://api.alquran.cloud/v1/surah/${number}/editions/${translation[0]},${translation[1]}`);
+            const request = await fetch(`https://api.alquran.cloud/v1/surah/${number}/editions/${translation[0]},${translation[1]},${translation[3]}`);
             const { data } = await request.json();
             const requestSummary = await fetch(`https://api.alquran.cloud/v1/surah/${number}/${translation[2]}`);
             const { data: dataSummary } = await requestSummary.json();
@@ -30,6 +32,10 @@ function Ayat({ setCurrentAyat, currentAyat, setAllAyat }) {
 
             setArti({
                 ...data[1]
+            })
+
+            setTransliteration({
+                ...data[2]
             })
 
             setSavedAyat([...storageAyat]);
@@ -150,7 +156,8 @@ function Ayat({ setCurrentAyat, currentAyat, setAllAyat }) {
                                             </div>
 
                                             <div className="mb-10">
-                                                <small className='tracking-wider'><b className="text-blue-700">{`${ay.numberInSurah})`}</b> {`${arti.ayahs[index].text}`}</small>
+                                                <p className="pt-2 pb-3 tracking-wider font-bold text-sm italic">{`${transliteration.ayahs[index].text}`}</p>
+                                                <small className='tracking-wider'>{`${ay.numberInSurah}) `}{`${arti.ayahs[index].text}`}</small>
                                             </div>
 
                                             {currentAyat === ay.number && (
@@ -176,6 +183,7 @@ function Ayat({ setCurrentAyat, currentAyat, setAllAyat }) {
                                                                 englishName: ayat.englishName,
                                                                 text: ay.text,
                                                                 numberInSurah: ay.numberInSurah,
+                                                                transliteration:transliteration.ayahs[index].text,
                                                                 arti: arti.ayahs[index].text
                                                             }
                                                             saveAyat(obj);
