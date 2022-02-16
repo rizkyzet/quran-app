@@ -1,4 +1,20 @@
-export default function Loading({ text }) {
+import { useEffect, useState } from "react";
+
+
+export default function Loading({ text,setAsd }) {
+
+    const [waitingText, setWaitingText] = useState(false);
+
+    useEffect(() => {
+    
+        setTimeout(() => {
+            setWaitingText(true)
+        }, 1000)
+
+    }, [])
+
+ 
+
     return (
         <div className="bg-gradient-to-t from-blue-200 to-white w-full h-full opacity-100 flex justify-center z-10 absolute m-0">
             <div className="absolute top-1/3 z-20 flex justify-center items-center flex-col">
@@ -42,8 +58,9 @@ export default function Loading({ text }) {
                 <div className="text-blue-500 font-bold tracking-widest pl-2">{text}</div>
 
 
-
-                <small className="text-blue-500 font-bold tracking-widest pl-2">jika terlalu lama, silahkan refresh halaman...</small>
+                {waitingText && (
+                    <small className="text-blue-500 font-bold tracking-widest pl-2">jika terlalu lama, silahkan refresh halaman...</small>
+                )}
 
 
             </div>

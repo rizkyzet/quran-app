@@ -54,9 +54,7 @@ function App() {
     getSurat();
 
 
-    return function () {
-      setLoading(true);
-    }
+ 
 
   }, []);
 

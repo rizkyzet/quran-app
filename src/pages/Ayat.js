@@ -7,8 +7,8 @@ function Ayat({ setCurrentAyat, currentAyat, setAllAyat }) {
     const { number, ayat: numberInSurah } = useParams();
     const [ayat, setAyat] = useState({});
     const [arti, setArti] = useState([]);
-    const [loading, setLoading] = useState(true);
     const [savedAyat, setSavedAyat] = useState([]);
+    const [loading, setLoading] = useState(true);
     const [firstTimeLoad, setFirstTimeLoad] = useState(true);
 
     useEffect(() => {
@@ -35,14 +35,11 @@ function Ayat({ setCurrentAyat, currentAyat, setAllAyat }) {
                 ...data
             })
 
-
-
-            // if(firstTimeLoad){
             if (numberInSurah === 'start') {
                 setCurrentAyat(data.ayahs[0].number);
-                document.getElementById('ayat').scrollIntoView();
                 setFirstTimeLoad(false)
                 setLoading(false)
+                document.getElementById('ayat').scrollIntoView();
 
             } else {
                 setCurrentAyat(parseInt(numberInSurah));
@@ -50,17 +47,25 @@ function Ayat({ setCurrentAyat, currentAyat, setAllAyat }) {
                 setLoading(false)
                 document.getElementById(`id-${numberInSurah}`).scrollIntoView();
             }
-            // }
-
 
         };
 
-        if (firstTimeLoad || numberInSurah === 'start') {
+        if (firstTimeLoad) {
+           
             setLoading(true);
-            getSpesificAyat();
+            return getSpesificAyat();
+            
+        }
+        
+        
+        if(!firstTimeLoad && numberInSurah ==='start'){
+         setLoading(true);
+            return getSpesificAyat();
         }
 
-
+        return () => {
+    
+        };
 
     }, [number, setCurrentAyat, setAllAyat, numberInSurah, firstTimeLoad, setFirstTimeLoad]);
 
@@ -70,7 +75,8 @@ function Ayat({ setCurrentAyat, currentAyat, setAllAyat }) {
         setCurrentAyat(parseInt(numberInSurah));
         const el = document.getElementById(`id-${numberInSurah}`);
         if (el) el.scrollIntoView();
-    }, [numberInSurah,setCurrentAyat])
+        
+    }, [numberInSurah, setCurrentAyat])
 
 
     const saveAyat = (obj) => {
@@ -116,7 +122,7 @@ function Ayat({ setCurrentAyat, currentAyat, setAllAyat }) {
                                 <Link key={`${ay.number}`} to={`/surat/${number}/${ay.number}`}>
                                     <div id={`id-${ay.number}`} className={`relative rounded p-5 shadow-md mb-5 mx-2 cursor-pointer ${currentAyat === ay.number ? 'bg-gradient-to-br from-blue-200 to-blue-300' : 'bg-white'}`} onClick={(e) => {
                                         setCurrentAyat(ay.number)
-                                        document.getElementById(`id-${ay.number}`).scrollIntoView();
+                                        // document.getElementById(`id-${ay.number}`).scrollIntoView();
                                     }}>
                                         <div className='flex justify-end mb-3'>
                                             <p className='text-slate-700 text-2xl text-right'>{`${ay.text}`} <span className="bg-blue-400 text-white rounded-md px-1 py-0 text-sm">{ay.numberInSurah.toLocaleString('ar-EG')}</span></p>
@@ -127,9 +133,7 @@ function Ayat({ setCurrentAyat, currentAyat, setAllAyat }) {
                                         </div>
 
                                         {currentAyat === ay.number && (
-
                                             savedAyat.filter((val) => val.idAyat === ay.number).length > 0 ?
-
                                                 <div className="mt-1 flex justify-end absolute bottom-4 right-4">
                                                     <button
                                                         className="bg-blue-100 text-blue-500 rounded  px-2 py-1 drop-shadow text-sm"
@@ -140,9 +144,7 @@ function Ayat({ setCurrentAyat, currentAyat, setAllAyat }) {
                                                         Saved
                                                     </button>
                                                 </div>
-
                                                 :
-
                                                 <div className="mt-1 flex justify-end absolute bottom-4 right-4">
                                                     <button onClick={(e) => {
                                                         e.preventDefault();
