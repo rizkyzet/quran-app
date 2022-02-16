@@ -139,8 +139,8 @@ function Ayat({ setCurrentAyat, currentAyat, setAllAyat }) {
 
                         {ayat.ayahs.map((ay, index) => {
                             return (
-                                <Link key={`${ay.number}`} to={`/surat/${number}/${ay.number}`}>
-                                    <div id={`id-${ay.number}`} className="py-3">
+                                <div id={`id-${ay.number}`} className="py-3">
+                                    <Link key={`${ay.number}`} to={`/surat/${number}/${ay.number}`}>
                                         <div className={`relative rounded p-5 shadow-md  mx-2 cursor-pointer ${currentAyat === ay.number ? 'bg-gradient-to-br from-blue-200 to-blue-300' : 'bg-white'}`} onClick={(e) => {
                                             setCurrentAyat(ay.number)
                                             // document.getElementById(`id-${ay.number}`).scrollIntoView();
@@ -188,8 +188,8 @@ function Ayat({ setCurrentAyat, currentAyat, setAllAyat }) {
                                             }
 
                                         </div>
-                                    </div>
-                                </Link>
+                                    </Link>
+                                </div>
                             )
                         })}
                     </div>
