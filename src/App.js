@@ -323,7 +323,7 @@ function App() {
         )}
 
         {!currentAyat && (
-          <small key={`small-${currentAyat}`} className="tracking-widest">
+          <small key={`small-${(currentAyat)}`} className="tracking-widest">
             Source Code : <a href="https://github.com/rizkyzet/quran-app" className='underline' target="_blank" rel='noreferrer'>Github</a> @ 2022
           </small>
         )}
