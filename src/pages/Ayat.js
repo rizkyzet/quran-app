@@ -156,7 +156,7 @@ function Ayat({ setCurrentAyat, currentAyat, setAllAyat }) {
                                             </div>
 
                                             <div className="mb-10">
-                                                <p className="pt-2 pb-3 tracking-wider font-bold text-sm italic">{`${transliteration.ayahs[index].text}`}</p>
+                                                <p className="pt-2 pb-3 tracking-wider font-bold text-sm italic text-slate-700">{`${transliteration.ayahs[index].text}`}</p>
                                                 <small className='tracking-wider'>{`${ay.numberInSurah}) `}{`${arti.ayahs[index].text}`}</small>
                                             </div>
 

@@ -66,7 +66,7 @@ export default function SavedAyat({ setCurrentAyat, currentAyat, deleteSavedAyat
                                 </div>
 
                                 <div className="mb-0">
-                                    <p className="pt-2 pb-3 tracking-wider font-bold text-sm italic">{`${ay.transliteration}`}</p>
+                                    <p className="pt-2 pb-3 tracking-wider font-bold text-sm italic text-slate-700">{`${ay.transliteration}`}</p>
                                     <small className='tracking-wider'>{`${ay.numberInSurah}) ${ay.arti}`}</small>
                                 </div>
 
@@ -109,7 +109,7 @@ export default function SavedAyat({ setCurrentAyat, currentAyat, deleteSavedAyat
                                 </div>
 
                                 <div className="mb-0">
-                                    <p className="pt-2 pb-3 tracking-wider font-bold text-sm italic">{`${ay.transliteration}`}</p>
+                                    <p className="pt-2 pb-3 tracking-wider font-bold text-sm italic text-slate-700">{`${ay.transliteration}`}</p>
                                     <small className='tracking-wider'>{`${ay.numberInSurah}) ${ay.arti}`}</small>
                                 </div>
 
