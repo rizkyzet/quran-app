@@ -67,7 +67,7 @@ export default function SavedAyat({ setCurrentAyat, currentAyat, deleteSavedAyat
 
                                 <div className="mb-0">
                                     <p className="pt-2 pb-3 tracking-wider font-bold text-sm italic">{`${ay.transliteration}`}</p>
-                                    <small className='tracking-wider'>{ay.arti}</small>
+                                    <small className='tracking-wider'>{`${ay.numberInSurah}) ${ay.arti}`}</small>
                                 </div>
 
 
