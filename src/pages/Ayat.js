@@ -129,13 +129,13 @@ function Ayat({ setCurrentAyat, currentAyat, setAllAyat }) {
 
             {
                 !loading && (
-                    <div className="py-2">
+                    <div className="px-1 py-3">
                         {/* SUMMARY */}
                         <div className='relative rounded p-5 shadow-md mb-3 mx-2 bg-white'>
                             <h1 className="text-2xl font-bold text-center mb-3">{ayat.englishName}</h1>
                             <div className="mb-10 text-center">
                                 <small className='tracking-wider'>{summary} </small>
-                                <p className="mt-3">
+                                <p className="mt-3 text-sm">
                                     <b>Muhammad Quraish Shihab</b>
                                 </p>
                             </div>
@@ -145,9 +145,9 @@ function Ayat({ setCurrentAyat, currentAyat, setAllAyat }) {
 
                         {ayat.ayahs.map((ay, index) => {
                             return (
-                                <div id={`id-${ay.number}`} className="py-3">
+                                <div id={`id-${ay.number}`} className="px-1 py-3">
                                     <Link key={`${ay.number}`} to={`/surat/${number}/${ay.number}`}>
-                                        <div className={`relative rounded p-5 shadow-md  mx-2 cursor-pointer ${currentAyat === ay.number ? 'bg-gradient-to-br from-blue-200 to-blue-300' : 'bg-white'}`} onClick={(e) => {
+                                        <div className={`relative rounded p-5 shadow-md cursor-pointer ${currentAyat === ay.number ? 'bg-gradient-to-br from-blue-200 to-blue-300' : 'bg-white'}`} onClick={(e) => {
                                             setCurrentAyat(ay.number)
                                             // document.getElementById(`id-${ay.number}`).scrollIntoView();
                                         }}>
