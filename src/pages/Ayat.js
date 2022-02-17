@@ -63,18 +63,13 @@ function Ayat({ setCurrentAyat, currentAyat, setAllAyat }) {
 
         };
 
-        if (firstTimeLoad) {
+        if (firstTimeLoad || numberInSurah === 'start') {
 
             setLoading(true);
             return getSpesificAyat();
 
         }
 
-
-        if (!firstTimeLoad && numberInSurah === 'start') {
-            setLoading(true);
-            return getSpesificAyat();
-        }
 
         return () => {
 
@@ -152,7 +147,7 @@ function Ayat({ setCurrentAyat, currentAyat, setAllAyat }) {
                                             // document.getElementById(`id-${ay.number}`).scrollIntoView();
                                         }}>
                                             <div className='flex justify-end mb-3'>
-                                                <p className='text-slate-700 text-3xl text-right'>{`${ay.text}`} <span className="bg-blue-400 text-white rounded-md px-1 py-0 text-sm">{ay.numberInSurah.toLocaleString('ar-EG')}</span></p>
+                                                <p className='text-slate-700 text-2xl text-right'>{`${ay.text}`} <span className="bg-blue-400 text-white rounded-md px-1 py-0 text-sm">{ay.numberInSurah.toLocaleString('ar-EG')}</span></p>
                                             </div>
 
                                             <div className="mb-10">
