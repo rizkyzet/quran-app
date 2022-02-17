@@ -302,7 +302,7 @@ function App() {
         )}
       </header>
 
-      <section className='grow shrink overflow-y-auto snap-y snap-mandatory scroll-pt-6'>
+      <section className='grow shrink overflow-y-auto snap-y snap-mandatory scroll-pt-3'>
         <Routes>
           <Route path="/" element={<Surat searchSurat={searchSurat} searchMode={searchMode} loading={loading} surat={surat} setCurrentAyat={setCurrentAyat} />} ></Route>
           <Route path="/surat/:number/:ayat" element={<Ayat currentAyat={currentAyat} setCurrentAyat={setCurrentAyat} setAllAyat={setAllAyat} quranAudioRef={quranAudioRef} />} ></Route>
