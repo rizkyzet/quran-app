@@ -131,7 +131,7 @@ function Ayat({ setCurrentAyat, currentAyat, setAllAyat }) {
                 !loading && (
                     <div className="px-1 py-3">
                         {/* SUMMARY */}
-                        <div className='relative rounded p-5 shadow-md mb-3 mx-2 bg-white'>
+                        <div className='relative rounded p-5 shadow-md mb-3 mx-1 bg-white'>
                             <h1 className="text-2xl font-bold text-center mb-3">{ayat.englishName}</h1>
                             <div className="mb-10 text-center">
                                 <small className='tracking-wider'>{summary} </small>
